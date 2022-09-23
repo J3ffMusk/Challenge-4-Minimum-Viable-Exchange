@@ -50,8 +50,7 @@ const { ethers } = require("ethers");
     or DM @austingriffith on twitter or telegram
 
     You should get your own Alchemy.com & Infura.io ID and put it in `constants.js`
-    (this is your connection to the main Ethereum network for ENS etc.)
-
+    (this is your connection to the main Ethereum ne
 
     🌏 EXTERNAL CONTRACTS:
     You can also bring in contract artifacts in `constants.js`
@@ -59,7 +58,7 @@ const { ethers } = require("ethers");
 */
 
 /// 📡 What chain are your contracts deployed to?
-const initialNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const initialNetwork = NETWORKS.goerli; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = true;
@@ -371,6 +370,14 @@ function App(props) {
             contracts={readContracts}
             contractName="DEX"
             eventName="LiquidityRemoved"
+            localProvider={localProvider}
+            mainnetProvider={mainnetProvider}
+            startBlock={1}
+          />
+           <Events
+            contracts={readContracts}
+            contractName="Balloons"
+            eventName="Approval"
             localProvider={localProvider}
             mainnetProvider={mainnetProvider}
             startBlock={1}
